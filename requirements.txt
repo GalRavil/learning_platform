@@ -1,5 +1,7 @@
 Django==1.8.16
 django-braces==1.8.1
+django-debug-toolbar==1.6
 olefile==0.44
 Pillow==4.0.0
 six==1.10.0
+sqlparse==0.2.2
