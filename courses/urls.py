@@ -14,6 +14,7 @@ urlpatterns = [
         name='course_delete'),
     url(r'(?P<pk>\d+)/module/$', views.CourseModuleUpdateView.as_view(),
         name='course_module_update'),
+
     url(r'^module/(?P<module_id>\d+)/$', views.ModuleContentListView.as_view(),
         name='module_content_list'),
     url(r'module/(?P<module_id>\d+)/content/(?P<model_name>\w+)/create/$',
@@ -24,4 +25,9 @@ urlpatterns = [
         name='module_content_update'),
     url(r'content/(?P<id>\d+)/delete/$', views.ContentDeleteView,
         name='module_content_delete'),
+
+    url(r'^module/order/$', views.ModuleContentListView.as_view(),
+        name='module_order'),
+    url(r'^content/order/$', views.ContentOrderView.as_view(),
+        name='content_order'),
 ]
