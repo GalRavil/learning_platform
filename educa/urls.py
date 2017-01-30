@@ -25,6 +25,7 @@ urlpatterns = [
     url(r'account/logout/$', auth_views.logout, name='logout'),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^course/', include('courses.urls')),
+    url(r'students/', include('students.urls')),
     url(r'^$', CourseListView.as_view(), name='course_list'),
 ]
 
