@@ -40,6 +40,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'debug_toolbar',
     'students',
+    'embed_video',
 )
 
 MIDDLEWARE_CLASSES = (
