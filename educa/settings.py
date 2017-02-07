@@ -41,6 +41,7 @@ INSTALLED_APPS = (
     'debug_toolbar',
     'students',
     'embed_video',
+    # 'memcache_status',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -113,3 +114,12 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 # django-toolbar
 INTERNAL_IPS = '127.0.0.1'
+
+
+# memcached
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
+        'LOCATION': '127.0.0.1:11211',
+    }
+}
