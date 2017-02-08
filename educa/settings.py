@@ -42,6 +42,7 @@ INSTALLED_APPS = (
     'students',
     'embed_video',
     # 'memcache_status',
+    'rest_framework',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -122,4 +123,14 @@ CACHES = {
         'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
         'LOCATION': '127.0.0.1:11211',
     }
+}
+
+
+# Django REST
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ]
 }

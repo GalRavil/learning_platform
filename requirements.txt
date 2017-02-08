@@ -2,13 +2,11 @@ Django==1.8.16
 django-braces==1.8.1
 django-debug-toolbar==1.6
 django-embed-video==1.1.0
+django-memcache-status==1.1
+djangorestframework==3.5.3
 olefile==0.44
 Pillow==4.0.0
+python3-memcached==1.51
 requests==2.13.0
 six==1.10.0
 sqlparse==0.2.2
-
-python3-memcached==1.51
-
-#django-memcache-status==1.1
-
