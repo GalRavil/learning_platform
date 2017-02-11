@@ -8,7 +8,9 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from ..models import Subject, Course
-from .serializers import SubjectSerializer, CourseSerializer
+from .permissions import IsEnrolled
+from .serializers import SubjectSerializer, CourseSerializer, \
+    CourseWithContentsSerializer
 
 
 class SubjectListView(generics.ListAPIView):
@@ -23,7 +25,7 @@ class SubjectDetailView(generics.RetrieveAPIView):
 
 # # view for users to enroll in courses
 # class CourseEnrollView(APIView):
-#     # user and password are sent by the client in the Authorization HTTP
+# # user and password are sent by the client in the Authorization HTTP
 #     # header encoded with Base64.
 #     authentication_classes = (BasicAuthentication,)
 #     # Allows access to authenticated users only
@@ -40,10 +42,18 @@ class CourseViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Course.objects.all()
     serializer_class = CourseSerializer
 
-    @detail_route(method=['post'],
+    @detail_route(methods=['post'],
                   authentication_classes=[BasicAuthentication],
                   permission_classes=[IsAuthenticated])
     def enroll(self, request, *args, **kwargs):
         course = self.get_object()
         course.students.add(request.user)
         return Response({'enrolled': True})
+
+    @detail_route(methods=['get'],
+                  serializer_class=CourseWithContentsSerializer,
+                  authentication_classes=[BasicAuthentication],
+                  permission_classes=[IsAuthenticated, IsEnrolled])
+    def contents(self, request, *args, **kwargs):
+        return self.retrieve(request, *args, **kwargs)
+
